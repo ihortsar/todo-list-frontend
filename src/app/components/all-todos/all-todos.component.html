@@ -1,1 +1,11 @@
-<p>all-todos works!</p>
+
+    <div *ngFor="let item of allTodos">
+        <div class="todo">
+            <input type="checkbox" [checked]="item.checked">
+            <span>{{item.id}}. </span>
+            <span>{{item.title}} </span>
+            <span>({{item.description}})</span>
+        </div>
+    </div>
+
+<h1 *ngIf="error">{{ error }}</h1>
