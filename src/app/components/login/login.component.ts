@@ -26,15 +26,17 @@ export class LoginComponent {
 
 
   async login() {
-    let response: any = await this.loginWithUsernameAndPassword(this.username, this.password)
-
-    
-    localStorage.setItem('token', response['token'])
-    this.router.navigateByUrl('/todos')
+    try {
+      let resp: any = await this.loginWithUsernameAndPassword(this.username, this.password);
+      localStorage.setItem('token', resp['token']);
+      this.router.navigateByUrl('/todos');
+    } catch (e) {
+      alert('Login fehlgeschlagen!');
+    }
   }
 
   loginWithUsernameAndPassword(username: string, password: string) {
-    const url = environment.baseUrl + '/login/'; // Corrected URL formation
+    const url = environment.baseUrl + '/login/'
     const body = {
       username: username,
       password: password,

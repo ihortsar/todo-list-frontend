@@ -16,12 +16,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     let clonedrequest = request.clone({
       headers: request.headers.set('Authorization', `token ${token}`)
     });
-    console.log(clonedrequest);
+
     
-    return next.handle(clonedrequest);
-
-
-
     return next.handle(clonedrequest).pipe(catchError((err) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {

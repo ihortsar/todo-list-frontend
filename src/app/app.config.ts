@@ -12,11 +12,7 @@ import { AuthInterceptorService } from './services/authinterceptor.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    },
+ 
     provideHttpClient(),
     provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimationsAsync()]
 };

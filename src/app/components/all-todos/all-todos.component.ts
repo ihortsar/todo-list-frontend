@@ -28,7 +28,10 @@ export class AllTodosComponent implements OnInit {
 
 
   async getTodos() {
-    const url = environment.baseUrl + '/todos'
-    return lastValueFrom(this.http.get(url))
+    const url = environment.baseUrl + '/todos/'
+    const options = {
+      headers: new HttpHeaders({ 'Authorization': `token ${localStorage.getItem('token')}` })
+    }
+    return lastValueFrom(this.http.get(url, options))
   }
 }
